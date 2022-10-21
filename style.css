@@ -1,0 +1,19 @@
+html {
+  min-height: 100%;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+svg {
+  background-color: rgb(226, 226, 226);
+}
+
+#canvas {
+  min-width: 1000px;
+  min-height: 600px;
+}

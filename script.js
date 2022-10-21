@@ -8,11 +8,35 @@ let educationData;
 
 let canvas = d3.select("#canvas");
 
-let drawMap = () => {};
+let drawMap = () => {
+  canvas
+    .selectAll("path")
+    .data(countyData)
+    .enter()
+    .append("path")
+    .attr("d", d3.geoPath())
+    .attr("class", "county")
+    .attr("fill", (countyDataItem) => {
+      let id = countyDataItem["id"];
+      let county = educationData.find((item) => {
+        return item["fips"] === id;
+      });
+      let percentage = county["bachelorsOrHigher"];
+      if (percentage <= 15) {
+        return "tomato";
+      } else if (percentage <= 30) {
+        return "orange";
+      } else if (percentage <= 45) {
+        return "lightgreen";
+      } else {
+        return "limegreen";
+      }
+    });
+};
 
 d3.json(countyURL).then((data, error) => {
   if (error) {
-    console.log(error);
+    /* console.log(error); */
   } else {
     countyData = topojson.feature(data, data.objects.counties).features;
     console.log(countyData);
@@ -23,6 +47,7 @@ d3.json(countyURL).then((data, error) => {
       } else {
         educationData = data;
         console.log(educationData);
+        drawMap();
       }
     });
   }

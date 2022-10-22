@@ -17,3 +17,9 @@ svg {
   min-width: 1000px;
   min-height: 600px;
 }
+
+#legend {
+  font-size: 18px;
+  text-align: center;
+  min-height: 210px;
+}

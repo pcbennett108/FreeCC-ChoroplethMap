@@ -23,3 +23,9 @@ svg {
   text-align: center;
   min-height: 210px;
 }
+
+#tooltip {
+  visibility: hidden;
+  height: auto;
+  width: auto;
+}

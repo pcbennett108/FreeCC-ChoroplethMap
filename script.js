@@ -24,15 +24,15 @@ let drawMap = () => {
       });
       let percentage = county["bachelorsOrHigher"];
       if (percentage <= 10) {
-        return "tomato";
+        return "#2F4858";
       } else if (percentage <= 20) {
-        return "orange";
+        return "#006781";
       } else if (percentage <= 30) {
-        return "yellow";
+        return "#008896";
       } else if (percentage <= 45) {
-        return "lightgreen";
+        return "#00C76C";
       } else {
-        return "limegreen";
+        return "#00E11D";
       }
     })
     .attr("data-fips", (countyDataItem) => {
@@ -57,7 +57,7 @@ let drawMap = () => {
       tooltip.text(
         county["fips"] +
           " - " +
-          county["area-name"] +
+          county["area_name"] +
           ", " +
           county["state"] +
           " : " +

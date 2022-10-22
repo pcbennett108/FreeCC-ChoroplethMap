@@ -22,15 +22,28 @@ let drawMap = () => {
         return item["fips"] === id;
       });
       let percentage = county["bachelorsOrHigher"];
-      if (percentage <= 15) {
+      if (percentage <= 10) {
         return "tomato";
-      } else if (percentage <= 30) {
+      } else if (percentage <= 20) {
         return "orange";
+      } else if (percentage <= 30) {
+        return "yellow";
       } else if (percentage <= 45) {
         return "lightgreen";
       } else {
         return "limegreen";
       }
+    })
+    .attr("data-fips", (countyDataItem) => {
+      return countyDataItem["id"];
+    })
+    .attr("data-education", (countyDataItem) => {
+      let id = countyDataItem["id"];
+      let county = educationData.find((item) => {
+        return item["fips"] === id;
+      });
+      let percentage = county["bachelorsOrHigher"];
+      return percentage;
     });
 };
 
